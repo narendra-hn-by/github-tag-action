@@ -5,6 +5,7 @@ set -o pipefail
 # config
 default_semvar_bump=${DEFAULT_BUMP:-minor}
 with_v=${WITH_V:-false}
+prefix=${PREFIX:-}
 release_branches=${RELEASE_BRANCHES:-master}
 custom_tag=${CUSTOM_TAG}
 source=${SOURCE:-.}
@@ -19,6 +20,7 @@ cd ${GITHUB_WORKSPACE}/${source}
 echo "*** CONFIGURATION ***"
 echo -e "\tDEFAULT_BUMP: ${default_semvar_bump}"
 echo -e "\tWITH_V: ${with_v}"
+echo -e "\tPREFIX: ${prefix}"
 echo -e "\tRELEASE_BRANCHES: ${release_branches}"
 echo -e "\tCUSTOM_TAG: ${custom_tag}"
 echo -e "\tSOURCE: ${source}"
@@ -113,6 +115,9 @@ echo $part
 # did we get a new tag?
 if [ ! -z "$new" ]
 then
+    #prefix with 'prefix'
+    new="$prefix$new"
+
 	# prefix with 'v'
 	if $with_v
 	then
