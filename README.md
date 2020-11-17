@@ -20,7 +20,7 @@ jobs:
       with:
         fetch-depth: '0'
     - name: Bump version and push tag
-      uses: anothrNick/github-tag-action@1.26.0
+      uses: narendra-hn-by/github-tag-action@0.3.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         WITH_V: true
@@ -35,6 +35,7 @@ _NOTE: set the fetch-depth for `actions/checkout@v2` to be sure you retrieve all
 * **GITHUB_TOKEN** ***(required)*** - Required for permission to tag the repo.
 * **DEFAULT_BUMP** *(optional)* - Which type of bump to use when none explicitly provided (default: `minor`).
 * **WITH_V** *(optional)* - Tag version with `v` character.
+* **PREFIX** *(optional)* - Prefix Tag version.
 * **RELEASE_BRANCHES** *(optional)* - Comma separated list of branches (bash reg exp accepted) that will generate the release tags. Other branches and pull-requests generate versions postfixed with the commit hash and do not generate any tag. Examples: `master` or `.*` or `release.*,hotfix.*,master` ...
 * **CUSTOM_TAG** *(optional)* - Set a custom tag, useful when generating tag based on f.ex FROM image in a docker image. **Setting this tag will invalidate any other settings set!**
 * **SOURCE** *(optional)* - Operate on a relative path under $GITHUB_WORKSPACE.
