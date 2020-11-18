@@ -94,6 +94,8 @@ else
     tagX="$tag"
 fi
 
+echo $tagX
+
 case "$log" in
     *#major* ) new=$(semver -i major $tagX); part="major";;
     *#minor* ) new=$(semver -i minor $tagX); part="minor";;
