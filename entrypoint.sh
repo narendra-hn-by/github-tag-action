@@ -87,15 +87,20 @@ then
   echo $log
 fi
 
+if [ ${#prefix} -ge 1 ]
+then
+    tagX=$(echo $tag | cut -c ${#prefix}- | cut -c 2-)
+fi
+
 case "$log" in
-    *#major* ) new=$(semver -i major $tag); part="major";;
-    *#minor* ) new=$(semver -i minor $tag); part="minor";;
-    *#patch* ) new=$(semver -i patch $tag); part="patch";;
+    *#major* ) new=$(semver -i major $tagX); part="major";;
+    *#minor* ) new=$(semver -i minor $tagX); part="minor";;
+    *#patch* ) new=$(semver -i patch $tagX); part="patch";;
     * ) 
         if [ "$default_semvar_bump" == "none" ]; then
             echo "Default bump was set to none. Skipping..."; exit 0 
         else 
-            new=$(semver -i "${default_semvar_bump}" $tag); part=$default_semvar_bump 
+            new=$(semver -i "${default_semvar_bump}" $tagX); part=$default_semvar_bump 
         fi 
         ;;
 esac
