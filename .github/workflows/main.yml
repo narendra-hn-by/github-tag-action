@@ -14,4 +14,4 @@ jobs:
       uses: narendra-hn-by/github-tag-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        PREFIX: release-2020
+        PREFIX: release-2020.
