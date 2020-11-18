@@ -87,7 +87,7 @@ then
   echo $log
 fi
 
-if [ ${#prefix} -ge 1 ] && [ "$tag" -ne "$initial_version" ]
+if [ ${#prefix} -ge 1 ] && [ "$tag" != "$initial_version" ]
 then
     tagX=$(echo $tag | cut -c ${#prefix}- | cut -c 2-)
 else
